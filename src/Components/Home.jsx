@@ -1,8 +1,7 @@
 import React from 'react';
+import ChefSection from './ChefSection';
 
 const Home = () => {
-
-    // style={{ backgroundImage: `url("/images/stock/photo-1507358522600-9f71e620c44e.jpg")` }}>
 
 
     return (
@@ -18,6 +17,9 @@ const Home = () => {
                         <button className="btn btn-primary">Get Started</button>
                     </div>
                 </div>
+            </div>
+            <div className='my-20'>
+                <ChefSection></ChefSection>
             </div>
         </div>
     );
