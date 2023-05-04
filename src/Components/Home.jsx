@@ -1,12 +1,14 @@
 import React from 'react';
 import ChefSection from './ChefSection';
+import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
 
+    const chefData =  useLoaderData();
 
     return (
         <div>
-            <div style={{ backgroundImage: `url("https://img.freepik.com/premium-photo/asian-food-variety-generative-ai_860599-127.jpg?size=626&ext=jpg&ga=GA1.1.563423901.1680299072&semt=robertav1_2_sidr")` }} className="hero min-h-screen" >
+            <div style={{ backgroundImage: `url("https://i.ibb.co/D88xDrw/bgggggggg.png")` }} className="hero min-h-screen" >
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-left text-neutral-content">
                     <div className="max-w-md">
@@ -18,9 +20,19 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='my-20'>
-                <ChefSection></ChefSection>
+
+            <div className="my-20">
+        <div className="text-center font-semibold text-3xl mb-10">
+            Our Chefs
+        </div>
+            <div  className='grid grid-cols-3 gap-5 ms-10'> {chefData.map(data => 
+                <ChefSection
+                key={data.id}
+                 data={data} ></ChefSection>
+                )} </div>
             </div>
+
+
         </div>
     );
 };
