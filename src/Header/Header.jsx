@@ -23,6 +23,9 @@ const Header = () => {
   </div>
   <div className="flex-none gap-2">
     <div className="form-control">
+      <button className='me-3'>
+        <Link to='/login'>Login</Link>
+      </button>
     </div>
     <div className="w-10 rounded-full ">
           <img className='mix-blend-darken' src="https://i.ibb.co/XjMLfQn/user.png" />
