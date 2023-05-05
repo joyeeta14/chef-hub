@@ -4,7 +4,7 @@ import { authContext } from '../Providers/AuthProviders';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { GoogleAuthProvider } from "firebase/auth";
-import { getAuth, signInWithPopup } from "firebase/auth";
+import { getAuth, signInWithPopup, sendEmailVerification  } from "firebase/auth";
 
 
 const Login = () => {
@@ -24,7 +24,14 @@ const Login = () => {
   }).catch((error) => {
     const errorMessage = error.message;
     console.log(errorMessage);
-
+  }
+);
+  }
+  const verifyMail = ()=>{
+    sendEmailVerification(auth.user)
+  .then(() => {
+    // Email verification sent!
+    // ...
   });
   }
 
@@ -58,7 +65,7 @@ const Login = () => {
       <button onClick={googleHandler} class="btn btn-outline ">
         Sign In with Google  <FcGoogle className='ms-5'/>
       </button>
-      <br />
+      <p onClick={verifyMail} className='btn btn-link'>Verify Mail Here</p>
       <button class="btn btn-outline ">
         Sign In with Github  <FaGithub className='ms-5'/>
       </button>
