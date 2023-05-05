@@ -11,7 +11,7 @@ const ChefRecipe = () => {
   return (
     <div>
       <div>
-      {navigation.state ===  ' loading' && <progress className="progress w-56"></progress>}
+      {navigation.state === ' loading' && <progress className="progress w-56"></progress>}
       </div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
