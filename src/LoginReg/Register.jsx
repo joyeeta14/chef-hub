@@ -17,17 +17,20 @@ const Register = () => {
     setError('');
 
 
-    if (!/^(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(password)) {
-      setError('Your password must contain atleast six characters, at least one letter and one number')
-      return;
-    }
     if (email, name, url, password) {
+      if (!/^(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(password)) {
+        setError('Your password must contain atleast six characters, at least one letter and one number')
+        return;
+      }
       registerWithEmail(email, password)
         .then(result => {
           const user = result.user;
           console.log(user);
         })
         .catch(error => setError(error))
+    }
+    else{
+      setError("You need to fullfil all requirements")
     }
   }
 
@@ -64,8 +67,8 @@ const Register = () => {
                   </label>
                   <input type="url" required onChange={(e) => setUrl(e.target.value)} placeholder="Photo URL" className="input input-bordered" />
                 </div>
-                <div>
-                  <p className='text-red-600'>{error}</p>
+                <div  className='text-red-600'>
+                {error}
                 </div>
                 <div className="form-control mt-6">
                   <button onClick={registrate} className="btn btn-primary">Register</button>

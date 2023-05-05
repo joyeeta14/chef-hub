@@ -1,9 +1,11 @@
 import React from 'react';
 import ChefSection from './ChefSection';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
+
+
 
 const Home = () => {
-
+    
     const chefData = useLoaderData();
 
     return (

@@ -6,7 +6,6 @@ const ChefSection = ({data}) => {
 
     const {id ,chefName, experience, chefPicture, likes,Numbers_of_recipes} = data;
 
-    console.log(data);
 
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
