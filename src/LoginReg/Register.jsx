@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { authContext } from '../Providers/AuthProviders';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import app from '../Firebase/firebase.config';
 
 const Register = () => {
 
-  const { registerWithEmail } = useContext(authContext);
+  const auth = getAuth(app);
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,17 +21,23 @@ const Register = () => {
 
     if (email, name, url, password) {
       if (!/^(?=.*?[a-z])(?=.*?[0-9]).{6,}$/.test(password)) {
-        setError('Your password must contain atleast six characters, at least one letter and one number')
+        setError('Your password must contain six characters, at least one letter and one number')
         return;
       }
-      registerWithEmail(email, password)
-        .then(result => {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((result) => {
+          // Signed in 
           const user = result.user;
           console.log(user);
+          // ...
         })
-        .catch(error => setError(error))
+        .catch((error) => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          // ..
+        });
     }
-    else{
+    else {
       setError("You need to fullfil all requirements")
     }
   }
@@ -47,28 +55,28 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text">Name</span>
                   </label>
-                  <input type="text" required name='name' placeholder="Your Name" onChange={(e) => setName(e.target.value)} className="input input-bordered" />
+                  <input type="text" required name='name' placeholder="Your Name" onChange={e => setName(e.target.value)} className="input input-bordered" />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
                   </label>
-                  <input type="email" onChange={(e) => setEmail(e.target.value)} name='email' placeholder="Your Email" required className="input input-bordered" />
+                  <input type="email" onChange={e => setEmail(e.target.value)} name='email' placeholder="Your Email" required className="input input-bordered" />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Password</span>
                   </label>
-                  <input type="password" required onChange={(e) => setPassword(e.target.value)} placeholder="password" className="input input-bordered" />
+                  <input type="password" required onChange={e => setPassword(e.target.value)} placeholder="password" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Photo URL</span>
                   </label>
-                  <input type="url" required onChange={(e) => setUrl(e.target.value)} placeholder="Photo URL" className="input input-bordered" />
+                  <input type="url" required onChange={e => setUrl(e.target.value)} placeholder="Photo URL" className="input input-bordered" />
                 </div>
-                <div  className='text-red-600'>
-                {error}
+                <div className='text-red-600'>
+                  {error}
                 </div>
                 <div className="form-control mt-6">
                   <button onClick={register} className="btn btn-primary">Register</button>

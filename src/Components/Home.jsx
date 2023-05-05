@@ -27,14 +27,14 @@ const Home = () => {
                 <div className="text-center font-semibold text-3xl mb-10">
                     Our Chefs
                 </div>
-                <div className='grid grid-cols-3 gap-5 ms-10'> {chefData.map(data =>
+                <div className='grid grid-cols-1 lg:grid-cols-3 gap-5 ms-2'> {chefData.map(data =>
                     <ChefSection
                         key={data.id}
                         data={data} ></ChefSection>
                 )} </div>
             </div>
 
-            <div className='my-10'>
+            <div className='my-10 mb-40 lg:mb-0'>
                 <div className="collapse">
                     <input type="checkbox" className="peer" />
                     <div className="collapse-title bg-primary text-primary-content peer-checked:bg-secondary peer-checked:text-secondary-content">

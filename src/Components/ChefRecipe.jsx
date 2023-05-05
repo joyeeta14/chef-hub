@@ -18,17 +18,17 @@ const ChefRecipe = () => {
         <div className="hero-content flex-col lg:flex-row">
           
         <div>
-    <LazyLoad height={762}>
+    <LazyLoad height={200}>
     <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
     </LazyLoad>
   </div>
           
           <div>
-            <h1 className="text-5xl font-bold">{chefName}</h1>
-            <p className="py-6">{description}</p>
-            <p className="py-6">Number of Recipes:       {Numbers_of_recipes}</p>
-            <p className="py-6">Years of Experience {experience}</p>
-            <p className="py-6">Likes :  {likes}</p>
+            <h1 className="text-3xl mt-14 font-bold">{chefName}</h1>
+            <p className="py-1">{description}</p>
+            <p className="py-1">Number of Recipes:       {Numbers_of_recipes}</p>
+            <p className="py-1">Years of Experience {experience}</p>
+            <p className="py-1">Likes :  {likes}</p>
             <button className="btn btn-primary">
               <Link to={`/recipe/${id}`}>Recipes</Link>
             </button>

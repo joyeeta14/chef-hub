@@ -12,7 +12,6 @@ const Recipe = () => {
     const recipe = useLoaderData();
     const { cooking_method1, cooking_method2, cooking_method3, item1_Pic, item1_ingredients, item1_name, item1_rating, item2_Pic, item3_Pic, item2_ingredients, item3_ingredients, item2_name, item3_name, item2_rating, item3_rating } = recipe;
 
-    console.log(recipe);
     // const [isClicked,  setClicked] = useState(false);
 
 
@@ -33,7 +32,8 @@ const Recipe = () => {
                     <div className="card-actions justify-end">
                         <div title='Rating' className="badge badge-outline">{item1_rating} </div>
                         <div className="badge badge-outline">
-                            <HiHeart onClick={notify} />
+                        <button>
+                       <HiHeart onClick={notify} />
                             <ToastContainer
                                 position="top-center"
                                 autoClose={5000}
@@ -46,6 +46,7 @@ const Recipe = () => {
                                 pauseOnHover
                                 theme="dark"
                             />
+                       </button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +65,8 @@ const Recipe = () => {
                     <div className="card-actions justify-end">
                         <div title='Rating' className="badge badge-outline">{item2_rating} </div>
                         <div className="badge badge-outline">
-                        <HiHeart onClick={notify} />
+                        <button>
+                       <HiHeart onClick={notify} />
                             <ToastContainer
                                 position="top-center"
                                 autoClose={5000}
@@ -77,6 +79,7 @@ const Recipe = () => {
                                 pauseOnHover
                                 theme="dark"
                             />
+                       </button>
                         </div>
                     </div>
                 </div>
@@ -95,7 +98,8 @@ const Recipe = () => {
                     <div className="card-actions justify-end">
                         <div className="badge badge-outline">{item3_rating} </div>
                         <div className="badge badge-outline">
-                        <HiHeart onClick={notify} />
+                       <button>
+                       <HiHeart onClick={notify} />
                             <ToastContainer
                                 position="top-center"
                                 autoClose={5000}
@@ -108,6 +112,7 @@ const Recipe = () => {
                                 pauseOnHover
                                 theme="dark"
                             />
+                       </button>
                         </div>
                     </div>
                 </div>

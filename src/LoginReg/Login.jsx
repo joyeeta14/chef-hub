@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { authContext } from '../Providers/AuthProviders';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { getAuth, signInWithPopup, sendEmailVerification, GithubAuthProvider ,GoogleAuthProvider } from "firebase/auth";
+import app from '../Firebase/firebase.config';
+
 
 
 
@@ -15,20 +17,27 @@ const Login = () => {
   const googleProvider = new GoogleAuthProvider();
   
 const githubProvider = new GithubAuthProvider();
-  const auth = getAuth();
+  const auth = getAuth(app);
 
   const [email, setEmail] =  useState('');
   const [password, setPassword] =  useState('');
-
+  const [error, setError] =  useState('');
+  const [user, setUser] =  useState('');
 
   const loginUser=(event)=>{
     event.preventDefault();
-    loginWithEmail(email,password)
-    .then(result =>{
-      const loggedUser = result.user;
-      console.log('logged in successfully');
-    })
-    .catch(error => console.log(error))
+    if(email, password){
+      loginWithEmail(email,password)
+      .then(result =>{
+        const loggedUser = result.user;
+        setUser(loggedUser);
+      })
+      .catch(error => setError(error.message))
+    }
+    else{
+      setError('You need to fulfill all requirements')
+    }
+
   }
 
 
@@ -43,7 +52,7 @@ const githubProvider = new GithubAuthProvider();
   })
   .catch((error) => {
     const errorMessage = error.message;
-    console.log(errorMessage);
+    setError(errorMessage);
   }
 )}
 
@@ -51,15 +60,15 @@ const githubHandler =()=>{
   signInWithPopup(auth, githubProvider)
   .then((result) => {
     const user = result.user;
-    console.log(user);
+    setUser(user);
   }).catch((error) => {
 const errorMessage = error.message;
-console.log(errorMessage);
+setError(errorMessage);
   });
 }
 
   const verifyMail = ()=>{
-    sendEmailVerification(auth.user)
+    sendEmailVerification(user)
   .then(() => {
     // Email verification sent!
     // ...
@@ -89,6 +98,7 @@ console.log(errorMessage);
               </div>
               <div className="form-control mt-6">
                 <button onClick={loginUser} className="btn btn-primary">Login</button>
+                <p className='text-red-600'>{error}</p>
               </div>
               <p>New here? Please <Link className='text-violet-700' to='/register'>Register</Link> here</p>
             </div>
