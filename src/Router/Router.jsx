@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             {
                 path: '/recipe/:id',
                 element: <Recipe></Recipe>,
-                loader: ({params})=> fetch(`https://world-of-foods-joyeeta14.vercel.app/chef/recipe/${params.id}`)
+                loader: ({params})=> fetch(`https://world-of-foods-joyeeta14.vercel.app/recipe/${params.id}`)
             },
             {
                 path: '/blog',

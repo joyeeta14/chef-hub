@@ -5,7 +5,6 @@ const ChefRecipe = () => {
 
     const recipeData = useLoaderData();
     const {chefName, id, experience, Numbers_of_recipes, description, chefPicture, likes} = recipeData;
-    console.log(recipeData);
 
     return (
         <div>

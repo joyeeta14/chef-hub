@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { FaBeer } from "react-icons/fa";
 import { HiHeart } from "react-icons/hi";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Recipe = () => {
 
+    const notify = () => toast("The recipe is your favorite");
+
     const recipe = useLoaderData();
     const { cooking_method1, cooking_method2, cooking_method3, item1_Pic, item1_ingredients, item1_name, item1_rating, item2_Pic, item3_Pic, item2_ingredients, item3_ingredients, item2_name, item3_name, item2_rating, item3_rating } = recipe;
 
-
-    const [isClicked,  setClicked] = useState(false);
+    console.log(recipe);
+    // const [isClicked,  setClicked] = useState(false);
 
 
     return (
@@ -19,15 +22,31 @@ const Recipe = () => {
                 <figure><img src={item1_Pic} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
-                    {item1_name}
+                        {item1_name}
                         <div className="badge badge-secondary">Yummy!</div>
                     </h2>
-                    <p><span className='font-medium'>Ingredients :</span> {item1_ingredients.map(i =>
-                        <li>{i}</li>
-                    )} </p>
+                    <p><span className='font-medium'>Ingredients :</span>
+                        {item1_ingredients.map(i =>
+                            <li>{i}</li>
+                        )} </p>
                     <p><span className='font-medium'>How to cook: </span> <br /> {cooking_method1}</p>
                     <div className="card-actions justify-end">
                         <div title='Rating' className="badge badge-outline">{item1_rating} </div>
+                        <div className="badge badge-outline">
+                            <HiHeart onClick={notify} />
+                            <ToastContainer
+                                position="top-center"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="dark"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,14 +63,26 @@ const Recipe = () => {
                     <p><span className='font-medium'>How to cook: </span> <br /> {cooking_method2}</p>
                     <div className="card-actions justify-end">
                         <div title='Rating' className="badge badge-outline">{item2_rating} </div>
-                        <div  className="badge badge-outline">
-                        <HiHeart/>
+                        <div className="badge badge-outline">
+                        <HiHeart onClick={notify} />
+                            <ToastContainer
+                                position="top-center"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="dark"
+                            />
                         </div>
                     </div>
                 </div>
             </div>
             <div className="card w-96 bg-base-100 shadow-xl">
-                <figure><img  src={item3_Pic} alt="Shoes" /></figure>
+                <figure><img src={item3_Pic} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
                         {item3_name}
@@ -64,7 +95,19 @@ const Recipe = () => {
                     <div className="card-actions justify-end">
                         <div className="badge badge-outline">{item3_rating} </div>
                         <div className="badge badge-outline">
-                        <HiHeart/>
+                        <HiHeart onClick={notify} />
+                            <ToastContainer
+                                position="top-center"
+                                autoClose={5000}
+                                hideProgressBar={false}
+                                newestOnTop={false}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="dark"
+                            />
                         </div>
                     </div>
                 </div>
