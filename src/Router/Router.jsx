@@ -18,17 +18,17 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: ()=> fetch('http://localhost:3000/chef')
+                loader: ()=> fetch('https://world-of-foods-joyeeta14.vercel.app/chef')
             },
             {
                 path: '/chef/:id',
                 element: <ChefRecipe></ChefRecipe>,
-                loader: ({params})=> fetch(`http://localhost:3000/chef/${params.id}`)
+                loader: ({params})=> fetch(`https://world-of-foods-joyeeta14.vercel.app/chef/${params.id}`)
             },
             {
                 path: '/recipe/:id',
                 element: <Recipe></Recipe>,
-                loader: ({params})=> fetch(`http://localhost:3000/recipe/${params.id}`)
+                loader: ({params})=> fetch(`https://world-of-foods-joyeeta14.vercel.app/chef/recipe/${params.id}`)
             },
             {
                 path: '/blog',

@@ -28,14 +28,6 @@ const Recipe = () => {
                     <p><span className='font-medium'>How to cook: </span> <br /> {cooking_method1}</p>
                     <div className="card-actions justify-end">
                         <div title='Rating' className="badge badge-outline">{item1_rating} </div>
-
-                        {
-                            isClicked ? <div className='hidden'>
-                            
-                            </div> :<div className="badge badge-outline">
-                                <HiHeart />
-                            </div> 
-                        }
                     </div>
                 </div>
             </div>
