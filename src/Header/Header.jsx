@@ -7,7 +7,7 @@ import { authContext } from '../Providers/AuthProviders';
 
 const Header = () => {
 
-  const { user } = useContext(authContext);
+  const { user, logOut } = useContext(authContext);
   console.log(user);
 
   return (
@@ -23,14 +23,21 @@ const Header = () => {
         </div>
         <div className="flex-none gap-2">
           {user ?
-            <div
-              class="transititext-primary text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
-              data-te-toggle="tooltip"
-              title={user.email}
-            ><div className="w-10 rounded-full " >
-                <img className='mix-blend-darken' src="https://i.ibb.co/XjMLfQn/user.png" />
-              </div></div>
-
+            <div className='flex items-center'>
+              <div
+                class="transititext-primary text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                data-te-toggle="tooltip"
+                title={user.email}
+              ><div className="w-10 rounded-full " >
+                  <img className='mix-blend-darken' src="https://i.ibb.co/XjMLfQn/user.png" />
+                </div>
+              </div>
+              <div className="form-control">
+                <button onClick={logOut} className='me-3 ms-5 text-white'>
+                  Log Out
+                </button>
+              </div>
+            </div>
             :
             <div className="form-control">
               <button className='me-3'>
@@ -38,11 +45,6 @@ const Header = () => {
               </button>
             </div>
           }
-          <div className="form-control">
-            <button className='me-3'>
-              <Link to='/login'>Log Out</Link>
-            </button>
-          </div>
         </div>
       </div>
     </div>

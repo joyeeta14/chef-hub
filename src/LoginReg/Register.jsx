@@ -12,7 +12,7 @@ const Register = () => {
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
 
-  const registrate = (event) => {
+  const register = (event) => {
     event.preventDefault();
     setError('');
 
@@ -71,7 +71,7 @@ const Register = () => {
                 {error}
                 </div>
                 <div className="form-control mt-6">
-                  <button onClick={registrate} className="btn btn-primary">Register</button>
+                  <button onClick={register} className="btn btn-primary">Register</button>
                 </div>
                 <p>Already have an account? Please <Link className='text-violet-700' to='/login'>Login</Link> here</p>
               </div>

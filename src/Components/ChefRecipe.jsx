@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLoaderData, useNavigation } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const ChefRecipe = () => {
 
@@ -15,7 +16,13 @@ const ChefRecipe = () => {
       </div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
-          <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
+          
+        <div>
+    <LazyLoad height={762}>
+    <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
+    </LazyLoad>
+  </div>
+          
           <div>
             <h1 className="text-5xl font-bold">{chefName}</h1>
             <p className="py-6">{description}</p>
@@ -33,3 +40,4 @@ const ChefRecipe = () => {
 };
 
 export default ChefRecipe;
+
